@@ -198,9 +198,10 @@ void fitTab(mat3* tab, vec2* tabMagFresnel, const int N, const Brdf& brdf)
         float roughness = a/float(N - 1);
         float alpha = std::max<float>(roughness*roughness, MIN_ALPHA);
 
-        cout << "a = " << a << "\t t = " << t  << endl;
-        cout << "alpha = " << alpha << "\t theta = " << theta << endl;
-        cout << endl;
+		if(t % 16 == 0)
+			cout << "a = " << a << "\t t = " << t  << endl;
+        //cout << "alpha = " << alpha << "\t theta = " << theta << endl;
+        //cout << endl;
 
         vec3 averageDir;
         computeAvgTerms(brdf, V, alpha, ltc.magnitude, ltc.fresnel, averageDir);
@@ -262,10 +263,10 @@ void fitTab(mat3* tab, vec2* tabMagFresnel, const int N, const Brdf& brdf)
         tab[a+t*N][2][1] = 0;
         tab[a+t*N][1][2] = 0;
 
-        cout << tab[a+t*N][0][0] << "\t " << tab[a+t*N][1][0] << "\t " << tab[a+t*N][2][0] << endl;
-        cout << tab[a+t*N][0][1] << "\t " << tab[a+t*N][1][1] << "\t " << tab[a+t*N][2][1] << endl;
-        cout << tab[a+t*N][0][2] << "\t " << tab[a+t*N][1][2] << "\t " << tab[a+t*N][2][2] << endl;
-        cout << endl;
+        //cout << tab[a+t*N][0][0] << "\t " << tab[a+t*N][1][0] << "\t " << tab[a+t*N][2][0] << endl;
+        //cout << tab[a+t*N][0][1] << "\t " << tab[a+t*N][1][1] << "\t " << tab[a+t*N][2][1] << endl;
+        //cout << tab[a+t*N][0][2] << "\t " << tab[a+t*N][1][2] << "\t " << tab[a+t*N][2][2] << endl;
+        //cout << endl;
     }
 }
 
@@ -367,8 +368,8 @@ void packTab(
 int main(int argc, char* argv[])
 {
     // BRDF to fit
-    BrdfGGX brdf;
-    //BrdfBeckmann brdf;
+    //BrdfGGX brdf;
+    BrdfBeckmann brdf;
     //BrdfDisneyDiffuse brdf;
 
     // allocate data
