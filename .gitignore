@@ -36,8 +36,6 @@ Makefile
 *.make
 
 # Visual Studio
-*.sln
-*.vcxproj*
 *.VC.db
 .vs
 
@@ -45,3 +43,7 @@ Makefile
 bin
 obj
 out
+Debug/
+Release/
+x64/
+/LtcFit/*.user
